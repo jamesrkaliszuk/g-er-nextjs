@@ -1,9 +1,8 @@
 
 .service_blocks_wrapper {
-    /* background: rgba(var(--color-1),0.8); */
+    background: rgba(var(--color-1),0.5);
     text-align: center;
-    border-radius: 5px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: 100%;
     height: 20rem;
     overflow: hidden;
@@ -17,7 +16,7 @@
 }
 
 .service_blocks_top {
-    background: linear-gradient(to bottom, var(--color-2), white);
+    background: linear-gradient(to bottom, var(--color-2), rgba(var(--color-1), 0));
     padding: 20px 0;
     color: black;
 }

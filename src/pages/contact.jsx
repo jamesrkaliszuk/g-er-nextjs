@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import styles from '@/styles/Contact.module.css'
 import { Nav } from '../components/export'
 
 export default function Contact() {
@@ -11,7 +13,14 @@ export default function Contact() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Nav />
-            contact
+            <header className={styles.contactHeader}>
+                <Image src={'/cutter.jpg'} fill className={styles.contactHeaderImg} />
+                <div>
+                    <h1>Get Free Consultation</h1>
+                    <h2>Contact Us Today</h2>
+                </div>
+            </header>
+            <main></main>
         </>
     )
 };

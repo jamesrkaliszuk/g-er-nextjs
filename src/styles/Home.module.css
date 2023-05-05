@@ -1,7 +1,6 @@
 
 .btnStyle {
   border: 1px solid black;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   padding: 15px;
@@ -92,9 +91,6 @@
 
 .imgBorder {
   border: 5px solid white;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 4px 23px 16px #5f5f5f; 
-  box-shadow: 0px 4px 23px 16px #5f5f5f;
 }
 
 .info1 {
