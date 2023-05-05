@@ -1,6 +1,5 @@
 
 .service_blocks_wrapper {
-    background: rgba(var(--color-1),0.5);
     text-align: center;
     /* border: 2px solid black; */
     width: 100%;
@@ -8,6 +7,7 @@
     overflow: hidden;
     margin: 50px 0px;
     font-family: var(--sec-font);
+    background: rgba(201, 198, 198, 0.5);
 }
 
 .service_blocks_wrapper p{
@@ -16,7 +16,7 @@
 }
 
 .service_blocks_top {
-    background: linear-gradient(to bottom, var(--color-2), rgba(var(--color-1), 0));
+    background: var(--color-2);
     padding: 20px 0;
     color: black;
 }

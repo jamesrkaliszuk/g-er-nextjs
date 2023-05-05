@@ -2,6 +2,8 @@ import React from 'react'
 import styles from '../../styles/Footer.module.css'
 
 const Footer = () => {
+    const newDate = new Date();
+    const getFullYear = newDate.getFullYear();
     return (
         <>
             <footer className={styles.footerContainer}>
@@ -31,7 +33,7 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <h5>&copy; 2023 Garden-ER | Developed With Love By <a href="https://campfirecreativegroup.com" target='_blank'>Campfire Creative Group</a></h5>
+                <h5>&copy; {getFullYear} Garden-ER | Developed With Love By <a href="https://campfirecreativegroup.com" target='_blank'>Campfire Creative Group</a></h5>
 
             </footer>
         </>
