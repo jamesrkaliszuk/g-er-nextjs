@@ -7,12 +7,16 @@ import { useState } from 'react'
 export default function Contact() {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '', maint: false, trim: false, lawn: false });
 
-    const handleChange = (e) => {
-
+    const handleChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === "checkbox" ? checked : value
+        }))
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
     };
     return (
         <>
@@ -42,29 +46,29 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className={styles.contactFormContainer}>
                     <div className={styles.formArea1}>
                         <label htmlFor="name">Name (required)</label>
-                        <input type="text" name='name' placeholder='Viktor Brem' required onChange={handleSubmit} value={formData.name} />
+                        <input type="text" name='name' placeholder='Viktor Brem' required onChange={handleChange} value={formData.name} />
                         <label htmlFor="email">Email (required)</label>
-                        <input type="email" name='email' placeholder='viktor@brem.com' required onChange={handleSubmit} value={formData.email} />
+                        <input type="email" name='email' placeholder='viktor@brem.com' required onChange={handleChange} value={formData.email} />
                         <label htmlFor="phone">Phone (optional)</label>
-                        <input type="tel" name='phone' placeholder='867-5309' onChange={handleSubmit} value={formData.phone} />
+                        <input type="tel" name='phone' placeholder='867-5309' onChange={handleChange} value={formData.phone} />
                     </div>
                     <div className={styles.formArea2}>
                         <div className={styles.formInput1}>
                             <label htmlFor="maint">Maintenance</label>
-                            <input type="checkbox" name='maint' id='maint' onChange={handleSubmit} checked={formData.maint} />
+                            <input type="checkbox" name='maint' id='maint' onChange={handleChange} checked={formData.maint} />
                         </div>
                         <div className={styles.formInput2}>
                             <label htmlFor="trim">Trimming</label>
-                            <input type="checkbox" name='trim' id='trim' onChange={handleSubmit} checked={formData.trim} />
+                            <input type="checkbox" name='trim' id='trim' onChange={handleChange} checked={formData.trim} />
                         </div>
                         <div className={styles.formInput3}>
                             <label htmlFor="lawn">Lawn</label>
-                            <input type="checkbox" name='lawn' id='lawn' onChange={handleSubmit} checked={formData.lawn} />
+                            <input type="checkbox" name='lawn' id='lawn' onChange={handleChange} checked={formData.lawn} />
                         </div>
                     </div>
                     <div className={styles.formArea3}>
-                        <label htmlFor="text">Message</label>
-                        <textarea name='text' placeholder='Message here...' onChange={handleSubmit} value={formData.text} />
+                        <label htmlFor="message">Message</label>
+                        <textarea name='message' placeholder='Message here...' onChange={handleChange} value={formData.message} />
                         <button type='submit' className={styles.contactFormBtn}>Submit</button>
                     </div>
                 </form>
