@@ -10,7 +10,7 @@ const Nav = () => {
 
     useEffect(() => {
         function handleScroll() {
-            if (window.pageYOffset > 800) {
+            if (window.pageYOffset > 500) {
                 setScrolled(true);
             } else {
                 setScrolled(false);

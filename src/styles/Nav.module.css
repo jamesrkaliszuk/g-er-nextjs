@@ -54,6 +54,10 @@
     transition: var(--transition);
 }
 
+.navLogo:hover {
+    filter: contrast(.6);
+}
+
 .smallNav {
     height: 50px;
     transition: var(--transition);
