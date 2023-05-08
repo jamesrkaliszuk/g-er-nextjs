@@ -5,8 +5,12 @@ import { Nav, Footer } from '../components/export'
 import { useState } from 'react'
 
 export default function Contact() {
+    // ALL OF THE STATE
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '', maint: false, trim: false, lawn: false });
+    const [isSent, setIsSent] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
+    // START OF FORM DATA USESTATE, HANDLECHANGE, AND HANDLESUBMIT FUNCTIONS
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         setFormData(prev => ({
@@ -17,7 +21,35 @@ export default function Contact() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    formData,
+                })
+            })
+
+            if (response.ok) {
+                setIsSent(true);
+            } else {
+                alert('Failed to send email. Please try again later.')
+                setIsSent(false);
+                setSending(false);
+            }
+
+        } catch (error) {
+            console.error(error);
+            alert('Failed to send email. Please try again later.')
+        }
+
+
     };
+    // END OF FORM DATA USESTATE, HANDLECHANGE, AND HANDLESUBMIT FUNCTIONS
     return (
         <>
             <Head>
@@ -43,12 +75,12 @@ export default function Contact() {
             {/* START OF MAIN CONTENT */}
             <main>
                 {/* START OF FORM */}
-                <form onSubmit={handleSubmit} className={styles.contactFormContainer}>
+                {!isSent && <form onSubmit={handleSubmit} className={styles.contactFormContainer}>
                     <div className={styles.formArea1}>
                         <label htmlFor="name">Name (required)</label>
-                        <input type="text" name='name' placeholder='Viktor Brem' required onChange={handleChange} value={formData.name} />
+                        <input type="text" name='name' placeholder='Your Name' required onChange={handleChange} value={formData.name} />
                         <label htmlFor="email">Email (required)</label>
-                        <input type="email" name='email' placeholder='viktor@brem.com' required onChange={handleChange} value={formData.email} />
+                        <input type="email" name='email' placeholder='john@johndoe.com' required onChange={handleChange} value={formData.email} />
                         <label htmlFor="phone">Phone (optional)</label>
                         <input type="tel" name='phone' placeholder='867-5309' onChange={handleChange} value={formData.phone} />
                     </div>
@@ -68,11 +100,14 @@ export default function Contact() {
                     </div>
                     <div className={styles.formArea3}>
                         <label htmlFor="message">Message</label>
-                        <textarea name='message' placeholder='Message here...' onChange={handleChange} value={formData.message} />
-                        <button type='submit' className={styles.contactFormBtn}>Submit</button>
+                        <textarea name='message' placeholder='Message here...' required onChange={handleChange} value={formData.message} />
+                        {!isSubmitting && <button type='submit' className={styles.contactFormBtn}>Submit</button>}
+                        {isSubmitting && <div className={styles.sendingContainer}><div className={`${styles.sendingCircle} ${styles.rotate_center}`}></div></div>}
                     </div>
-                </form>
+                </form>}
                 {/* END OF FORM */}
+                {/* IF THE FORM IS SENT, SHOW THIS */}
+                {isSent && <div className={styles.formSent}><h2>Thank you for contacting us. We will be with you soon!</h2> <a href={'/'} className={styles.btnStyle}>Home Page</a></div>}
             </main >
             {/* END OF MAIN CONTENT */}
 
