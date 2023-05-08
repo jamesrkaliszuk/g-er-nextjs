@@ -69,3 +69,58 @@
     margin-right: 0px;
     opacity: 0;
 }
+
+/* for mobile and tablet */
+.mobileNavContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background: rgba(var(--color-1), 0.6);
+    transition: var(--transition);
+}
+
+.mobileNavContainer ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 190px;
+    background: rgba(0,0,0,0.5);
+    padding: 15px;
+    transition: var(--transition);
+}
+
+.mobileNavContainer ul li {
+    color: white;
+    list-style-type: none;
+    font-family: var(--sec-font);
+    font-weight: 700;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid white;
+    width: 8rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobileNavLogo {
+    position: relative;
+    display: block;
+    width: 250px;
+    height: 150px;
+    transition: var(--transition);
+}
+
+.navIcon {
+    font-size: 2rem;
+}
