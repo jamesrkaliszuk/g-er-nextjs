@@ -90,7 +90,7 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    top: 190px;
+    top: 200px;
     background: rgba(0,0,0,0.5);
     padding: 15px;
     transition: var(--transition);
@@ -122,5 +122,9 @@
 }
 
 .navIcon {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 5px
 }
+
+
+

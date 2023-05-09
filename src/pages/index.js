@@ -3,12 +3,30 @@ import Image from "next/image";
 import styles from "@/styles/Home.module.css";
 import { Nav, Footer, ServiceBlock } from '../components/export'
 import serviceData from './serviceBlockInfo'
+import { useEffect, useState } from "react";
 
 export default function Home() {
+
+  const [isMobile, setIsMobile] = useState(false);
 
   // MAPPING OVER SERVICEBLOCKINFO JS FILE WITH AN ARRAY OF OBJECTS IN IT
   const mappedServiceData = serviceData.map(data => (<ServiceBlock key={data.id} data={data} />));
   // END MAPPING OVER SERVICEBLOCKINFO JS FILE WITH AN ARRAY OF OBJECTS IN IT
+useEffect(()=>{
+  const windowWidth = () => {
+    if(window.innerWidth < 800){
+      setIsMobile(true);
+    }else {
+      setIsMobile(false);
+    }
+  }
+
+  window.addEventListener('resize', windowWidth);
+  return () => {
+    window.removeEventListener('resize', windowWidth);
+  }
+}, [])
+  
   return (
     <>
       <Head>
@@ -41,15 +59,15 @@ export default function Home() {
         <div className={styles.infoContainer}>
           <article className={`${styles.info1} ${styles.infoColor}`}>
 
-            <Image src={'/house_1.jpg'} width={600} height={400} className={styles.imgBorder} alt="a large modern house with a freshly cut lawn" />
+            <Image src={'/house_1.jpg'} width={isMobile ? 400 : 600} height={isMobile ? 300 : 400} className={styles.imgBorder} alt="a large modern house with a freshly cut lawn" />
             <p>Garden ER is a North Vancouver owned & operated gardening & landscaping company, dedicated to servicing North & West Vancouver lawns & gardens. </p>
           </article>
           <article className={`${styles.info2} ${styles.infoColor}`}>
-            <Image src={'/house_2.jpg'} width={600} height={400} className={styles.imgBorder} alt="a big house with a freshly cut lawn and some small hedges" />
+            <Image src={'/house_2.jpg'} width={isMobile ? 400 : 600} height={isMobile ? 300 : 400} className={styles.imgBorder} alt="a big house with a freshly cut lawn and some small hedges" />
             <p>We provide a complete, reliable and professional garden service.</p>
           </article>
           <article className={`${styles.info3} ${styles.infoColor}`}>
-            <Image src={'/house_3.jpg'} width={600} height={400} className={styles.imgBorder} alt="front portrait of a large home with a large cut lawn" />
+            <Image src={'/house_3.jpg'} width={isMobile ? 400 : 600} height={isMobile ? 300 : 400} className={styles.imgBorder} alt="front portrait of a large home with a large cut lawn" />
             <p>Let Garden ER take care of any job, large or small, our services range from regular lawn mowing to the installation of a new garden. </p>
           </article>
         </div>

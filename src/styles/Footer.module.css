@@ -69,3 +69,24 @@
     text-align: center;
     font-size: .9rem;
 }
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 800px){
+    
+    .footContentWrapper {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .footContactInfo {
+        gap: 15px;
+    }
+
+    .footContactInfo hr {
+        height: 100px;
+    }
+}

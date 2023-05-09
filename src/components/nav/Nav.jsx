@@ -33,7 +33,7 @@ const Nav = () => {
 
     useEffect(() => {
         const pageWidth = () => {
-            if(window.innerWidth < 800){
+            if(window.innerWidth <= 800){
                 setIsMobile(true);
             }else {
                 setIsMobile(false);
@@ -69,7 +69,7 @@ const Nav = () => {
     return (
         <>
         {!isMobile && <nav className={`${styles.navContainer} ${addSmallNav}`}>
-            <a href={'/'} className={styles.navLogo}><Image src={'/logo.png'} fill /></a>
+            <a href={'/'} className={styles.navLogo}><Image src={'/logo.png'} fill alt='garden-er company logo' /></a>
             <ul>
                 <Link href='/'><li className={isActive('/')}>Home</li></Link>
                 <Link href='/services'><li className={isActive('/services')}>Services</li></Link>
@@ -77,8 +77,8 @@ const Nav = () => {
             </ul>
         </nav>}
         
-        {isMobile && <nav className={`${styles.mobileNavContainer} ${addSmallNav}`}>
-            <a href={'/'} className={styles.mobileNavLogo}><Image src={'/logo.png'} fill /></a>
+        {isMobile && <nav className={styles.mobileNavContainer}>
+            <a href={'/'} className={styles.mobileNavLogo}><Image src={'/logo.png'} fill alt='garden-er company logo' /></a>
             {hamburgerClick ? close : open}
             {hamburgerClick && <ul>
                 <Link href='/'><li className={isActive('/')}>Home</li></Link>

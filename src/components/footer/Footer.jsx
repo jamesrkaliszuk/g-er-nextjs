@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Footer.module.css'
 
 const Footer = () => {
+    const [responsive, setResponsive] = useState(false);
     const newDate = new Date();
     const getFullYear = newDate.getFullYear();
+
+    useEffect(()=>{
+        const windowWidth = ()=>{
+            if(window.innerWidth <= 800){
+                setResponsive(true);
+            }else {
+                setResponsive(false);
+            }
+        }
+
+        window.addEventListener('resize', windowWidth);
+        return ()=> {
+            window.addEventListener('resize', windowWidth);
+        }
+    }, [])
     return (
         <>
             <footer className={styles.footerContainer}>
@@ -18,7 +34,7 @@ const Footer = () => {
                             <h2>Contact Information:</h2>
                             <h3>adam@garden-er.com</h3>
                         </div>
-
+                        {responsive && <hr></hr>}
                         <div>
                             <h2>Hours:</h2>
                             <ul>
