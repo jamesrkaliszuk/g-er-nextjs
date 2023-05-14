@@ -1,4 +1,3 @@
-
 .contactHeader {
     position: relative;
     display: block;
@@ -187,19 +186,19 @@
     background: var(--color-3);
     font-family: var(--sec-font);
     transition: var(--transition);
-  }
-  
-  .btnStyle:hover {
+}
+
+.btnStyle:hover {
     color: white;
     background: var(--color-2);
     border: 1px solid var(--color-3);
-  }
+}
 
 /* ANIMATIONS */
 
 .rotate_center {
-	-webkit-animation: rotate-center 0.3s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite both;
-	        animation: rotate-center 0.3s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite both;
+    -webkit-animation: rotate-center 0.3s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite both;
+    animation: rotate-center 0.3s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite both;
 }
 
 /* ----------------------------------------------
@@ -214,24 +213,53 @@
  * animation rotate-center
  * ----------------------------------------
  */
- @-webkit-keyframes rotate-center {
+@-webkit-keyframes rotate-center {
     0% {
-      -webkit-transform: rotate(0);
-              transform: rotate(0);
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
     }
+
     100% {
-      -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  @keyframes rotate-center {
+}
+
+@keyframes rotate-center {
     0% {
-      -webkit-transform: rotate(0);
-              transform: rotate(0);
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
     }
+
     100% {
-      -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
-  
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 800px) {
+    .formArea1 {
+        width: 100%;
+        align-items: center;
+    }
+
+    .formArea1 input {
+        width: 90%;
+    }
+
+    .formArea2 {
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .formArea3 {
+        width: 100%;
+    }
+
+    .formArea3 textarea {
+        min-width: 90%;
+    }
+}
